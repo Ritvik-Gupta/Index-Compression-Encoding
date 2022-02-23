@@ -1,13 +1,12 @@
 import sys
 
 import pandas as pd
-import plotly.express as px
-
 from algorithms.elias_delta import EliasDeltaCoder
 from algorithms.elias_gamma import EliasGammaCoder
 from algorithms.golomb import GolombCoder
 from algorithms.index_compression import IndexCompressionImplementor
 from algorithms.unary import UnaryCoder
+from tabulate import tabulate
 
 
 def main(args: list[str]):
@@ -34,8 +33,10 @@ def main(args: list[str]):
             )
 
     df = pd.DataFrame(data)
-    df.to_csv("docs/profiling_coders.csv")
-    px.line(df, x="Number", y="Message Size", color="Coder Name").show()
+    df.to_csv("docs/profile_coders.csv")
+
+    del df["Encoded Message"]
+    print(tabulate(df, headers="keys", tablefmt="fancy_grid"))
 
 
 if __name__ == "__main__":

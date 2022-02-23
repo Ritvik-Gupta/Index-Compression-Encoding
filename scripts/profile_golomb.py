@@ -1,8 +1,8 @@
 import sys
 
 import pandas as pd
-import plotly.express as px
 from algorithms.golomb import GolombCoder
+from tabulate import tabulate
 
 
 def main(args: list[str]):
@@ -24,10 +24,10 @@ def main(args: list[str]):
             )
 
     df = pd.DataFrame(data)
-    df.to_csv("docs/profiling_golomb.csv")
-    px.line(
-        df, x="Number", y="Message Size", color="Coder Name", title="Golomb on `b`"
-    ).show()
+    df.to_csv("docs/profile_golomb.csv")
+
+    del df["Encoded Message"]
+    print(tabulate(df, headers="keys", tablefmt="psql"))
 
 
 if __name__ == "__main__":
