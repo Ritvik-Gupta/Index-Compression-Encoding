@@ -7,20 +7,20 @@ from algorithms.unary import UnaryCoder
 
 
 class GolombCoder(IndexCompressionImplementor):
-    def __init__(self, b: int) -> None:
-        self.b = b
+    def __init__(self, golomb_rice_param: int) -> None:
+        self.golomb_rice_param = golomb_rice_param
 
     def __str__(self) -> str:
-        return f"GolombCoder(b={self.b})"
+        return f"GolombCoder(b={self.golomb_rice_param})"
 
     def encode(self, number: int) -> BinaryFormat:
-        q = number // self.b
-        r = number % self.b
+        q = number // self.golomb_rice_param
+        r = number % self.golomb_rice_param
 
         unary_code = UnaryCoder().encode(q + 1)
 
-        i = math.floor(math.log2(self.b))
-        d = 2 ** (i + 1) - self.b
+        i = math.floor(math.log2(self.golomb_rice_param))
+        d = 2 ** (i + 1) - self.golomb_rice_param
 
         if r >= d:
             r += d
@@ -38,8 +38,8 @@ class GolombCoder(IndexCompressionImplementor):
             code_idx += 1
 
         q = code_idx
-        i = math.floor(math.log2(self.b))
-        d = 2 ** (i + 1) - self.b
+        i = math.floor(math.log2(self.golomb_rice_param))
+        d = 2 ** (i + 1) - self.golomb_rice_param
 
         r = 0
         bit_shifts = i - 1
@@ -52,4 +52,4 @@ class GolombCoder(IndexCompressionImplementor):
         if r >= d:
             r = (r << 1) + int(encoded[idx + code_idx + 1]) - d
 
-        return q * self.b + r
+        return q * self.golomb_rice_param + r

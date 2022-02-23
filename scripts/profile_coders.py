@@ -18,7 +18,7 @@ def main():
         UnaryCoder(),
         EliasGammaCoder(),
         EliasDeltaCoder(),
-        GolombCoder(b=default_b_value),
+        GolombCoder(default_b_value),
     ]
     for coder in coders:
         for number in range(nums_lower_limit, nums_upper_limit + 1, skip_value):
