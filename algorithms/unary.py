@@ -1,5 +1,6 @@
-from algorithms.index_compression import IndexCompressionImplementor
 from utils.binary_format import BinaryFormat, one, zero
+
+from algorithms.index_compression import IndexCompressionImplementor
 
 
 class UnaryCoder(IndexCompressionImplementor):

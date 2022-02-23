@@ -1,8 +1,8 @@
 import math
 
-from algorithms.index_compression import IndexCompressionImplementor
 from utils.binary_format import BinaryFormat
 
+from algorithms.index_compression import IndexCompressionImplementor
 from algorithms.unary import UnaryCoder
 
 

@@ -2,7 +2,6 @@ import sys
 
 import pandas as pd
 import plotly.express as px
-from tabulate import tabulate
 
 from algorithms.elias_delta import EliasDeltaCoder
 from algorithms.elias_gamma import EliasGammaCoder
@@ -35,7 +34,7 @@ def main(args: list[str]):
             )
 
     df = pd.DataFrame(data)
-    df.to_csv("docs/coders_performance.csv")
+    df.to_csv("docs/profiling_coders.csv")
     px.line(df, x="Number", y="Message Size", color="Coder Name").show()
 
 
