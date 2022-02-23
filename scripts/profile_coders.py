@@ -1,5 +1,3 @@
-import sys
-
 import pandas as pd
 from algorithms.elias_delta import EliasDeltaCoder
 from algorithms.elias_gamma import EliasGammaCoder
@@ -9,9 +7,11 @@ from algorithms.unary import UnaryCoder
 from tabulate import tabulate
 
 
-def main(args: list[str]):
-    max_num_check = int(args[0])
-    default_b_value = int(args[1])
+def main():
+    nums_lower_limit = int(input("Enter the Lower Limit of numbers :\t"))
+    nums_upper_limit = int(input("Enter the Upper Limit of numbers :\t"))
+    skip_value = int(input("Enter the Skip between numbers :\t"))
+    default_b_value = int(input("Enter the Default 'b' value :\t"))
 
     data = []
     coders: list[IndexCompressionImplementor] = [
@@ -21,12 +21,12 @@ def main(args: list[str]):
         GolombCoder(b=default_b_value),
     ]
     for coder in coders:
-        for n in range(1, max_num_check + 1):
-            encoded = coder.encode(n)
+        for number in range(nums_lower_limit, nums_upper_limit + 1, skip_value):
+            encoded = coder.encode(number)
             data.append(
                 {
                     "Coder Name": str(coder),
-                    "Number": n,
+                    "Number": number,
                     "Encoded Message": str(encoded),
                     "Message Size": len(encoded),
                 }
@@ -40,4 +40,4 @@ def main(args: list[str]):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()

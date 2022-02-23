@@ -12,12 +12,12 @@ def main(args: list[str]):
     data = []
     for b in range(1, max_b_value + 1):
         coder = GolombCoder(b)
-        for n in range(1, max_num_check + 1):
-            encoded = coder.encode(n)
+        for number in range(1, max_num_check + 1):
+            encoded = coder.encode(number)
             data.append(
                 {
                     "Coder Name": str(coder),
-                    "Number": n,
+                    "Number": number,
                     "Encoded Message": str(encoded),
                     "Message Size": len(encoded),
                 }
