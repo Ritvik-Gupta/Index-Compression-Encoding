@@ -10,11 +10,11 @@ class BinaryFormat(Deque[bool]):
             number //= 2
         return code
 
-    def as_binary_str(self) -> str:
-        binary = ""
+    def __str__(self) -> str:
+        binary = "("
         for bit in self:
             binary += str(int(bit))
-        return binary
+        return binary + ")b"
 
 
 def zero() -> BinaryFormat:

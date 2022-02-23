@@ -1,8 +1,11 @@
-from index_compression import IndexCompressionImplementor
-from utils import BinaryFormat, zero
+from algorithms.index_compression import IndexCompressionImplementor
+from utils.binary_format import BinaryFormat, zero
 
 
 class EliasGammaCoder(IndexCompressionImplementor):
+    def __str__(self) -> str:
+        return "EliasGammaCoder()"
+
     def encode(self, number: int) -> BinaryFormat:
         bianry_code = BinaryFormat.create_from(number)
         initial_zeroes = zero() * (len(bianry_code) - 1)

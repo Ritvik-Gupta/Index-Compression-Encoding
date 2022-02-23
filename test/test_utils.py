@@ -1,12 +1,12 @@
 import unittest
 from collections import deque
 
-import utils
+from  utils.binary_format import zero
 
 
 class TestUitls(unittest.TestCase):
     def test_zero(self):
-        self.assertEqual(utils.zero(), deque([False]))
+        self.assertEqual(zero(), deque([False]))
 
 
 if __name__ == "__main__":

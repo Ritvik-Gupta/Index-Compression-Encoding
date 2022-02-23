@@ -1,12 +1,15 @@
 import math
 
-from index_compression import IndexCompressionImplementor
-from utils import BinaryFormat
+from algorithms.index_compression import IndexCompressionImplementor
+from utils.binary_format import BinaryFormat
 
 from algorithms.elias_gamma import EliasGammaCoder
 
 
 class EliasDeltaCoder(IndexCompressionImplementor):
+    def __str__(self) -> str:
+        return "EliasDeltaCoder()"
+
     def encode(self, number: int) -> BinaryFormat:
         gamma_code = EliasGammaCoder().encode(1 + math.floor(math.log2(number)))
         binary_code = BinaryFormat.create_from(number)

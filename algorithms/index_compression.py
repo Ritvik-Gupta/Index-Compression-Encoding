@@ -1,6 +1,6 @@
 import abc
 
-from utils import BinaryFormat
+from utils.binary_format import BinaryFormat
 
 
 class IndexCompressionImplementor(metaclass=abc.ABCMeta):
@@ -15,11 +15,13 @@ class IndexCompressionImplementor(metaclass=abc.ABCMeta):
         )
 
     @abc.abstractmethod
+    def __str__(self) -> str:
+        raise NotImplementedError
+
+    @abc.abstractmethod
     def encode(self, number: int) -> BinaryFormat:
-        """Load in the data set"""
         raise NotImplementedError
 
     @abc.abstractmethod
     def decode(self, encoded: BinaryFormat) -> int:
-        """Extract text from the data set"""
         raise NotImplementedError

@@ -1,7 +1,7 @@
 import math
 
-from index_compression import IndexCompressionImplementor
-from utils import BinaryFormat
+from algorithms.index_compression import IndexCompressionImplementor
+from utils.binary_format import BinaryFormat
 
 from algorithms.unary import UnaryCoder
 
@@ -9,6 +9,9 @@ from algorithms.unary import UnaryCoder
 class GolombCoder(IndexCompressionImplementor):
     def __init__(self, b: int) -> None:
         self.b = b
+
+    def __str__(self) -> str:
+        return f"GolombCoder(b={self.b})"
 
     def encode(self, number: int) -> BinaryFormat:
         q = number // self.b
