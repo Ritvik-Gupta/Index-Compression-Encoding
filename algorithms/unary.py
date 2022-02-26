@@ -8,7 +8,7 @@ class UnaryCoder(IndexCompressionImplementor):
         return f"UnaryCoder()"
 
     def encode(self, number: int) -> BinaryFormat:
-        return zero() * (number - 1) + one()
+        return zero() * (number - 1) + one()  # join (N-1) zeroes then a one
 
     def decode(self, encoded: BinaryFormat) -> int:
-        return encoded.count(False) + 1
+        return encoded.count(False) + 1  # counting the number of zeroes + 1

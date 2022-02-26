@@ -8,6 +8,9 @@ from tabulate import tabulate
 
 
 def main():
+    print("Name:                    Ritvik Gupta")
+    print("Registration Number:     19BCE0397", end="\n\n")
+
     nums_lower_limit = int(input("Enter the Lower Limit of numbers :\t"))
     nums_upper_limit = int(input("Enter the Upper Limit of numbers :\t"))
     skip_value = int(input("Enter the Skip between numbers :\t"))
@@ -32,7 +35,7 @@ def main():
                 }
             )
 
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(data).set_index(["Coder Name", "Number"])
     df.to_csv("docs/profile_coders.csv")
 
     del df["Encoded Message"]

@@ -4,7 +4,10 @@ import plotly.graph_objects as go
 df = pd.read_csv("docs/profile_golomb.csv")
 
 fig = go.Figure()
-fig.update_layout(title="Golomb on `b`")
+fig.update_layout(
+    title="Golomb on `b`",
+    template="plotly_dark",
+)
 
 for coder_name in df["Coder Name"].unique():
     coder_df = df.loc[df["Coder Name"] == coder_name]

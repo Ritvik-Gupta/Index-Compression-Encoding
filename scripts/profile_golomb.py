@@ -24,6 +24,7 @@ def main(args: list[str]):
             )
 
     df = pd.DataFrame(data)
+    df.set_index(["Coder Name", "Number"])
     df.to_csv("docs/profile_golomb.csv")
 
     del df["Encoded Message"]
